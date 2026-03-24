@@ -102,10 +102,16 @@ export default function Index() {
       <header className="border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-8 py-10 flex items-center gap-6">
           <img src={veebikoolLogomark} alt="Veebikool" className="h-14 w-auto" />
-          <div>
+          <div className="flex-1">
             <h1 className="text-3xl font-heading font-extrabold text-black tracking-tight">Brand Toolkit</h1>
             <p className="text-sm text-gray-400 font-body mt-0.5">Kujunduselementide kogu · Veebikool CVI</p>
           </div>
+          <Link to="/downloads">
+            <Button variant="outline" size="sm" className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300">
+              <Package className="w-4 h-4" />
+              Allalaadimised
+            </Button>
+          </Link>
         </div>
       </header>
 
