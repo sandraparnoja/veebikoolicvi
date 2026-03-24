@@ -20,16 +20,42 @@ const BACKGROUND_FILES = [
 ];
 
 const SVG_FILES = [
-  "curved-arrow-right-purple", "curved-arrow-right-orange", "curved-arrow-left-purple", "curved-arrow-left-orange",
-  "straight-arrow-purple", "straight-arrow-orange", "wavy-arrow-purple", "wavy-arrow-orange",
+  // Arrows
+  "dashed-curved-up-black", "dashed-curved-up-purple", "dashed-curved-up-orange", "dashed-curved-down-black",
+  "dashed-loop-black", "dashed-loop-purple", "solid-curved-up-purple", "solid-curved-up-orange", "solid-curved-down-purple",
+  "straight-arrow-purple", "straight-arrow-orange", "straight-dashed-black",
+  "diagonal-up-purple", "diagonal-down-orange", "wavy-arrow-purple", "wavy-arrow-orange",
+  "bouncing-arrow-purple", "circle-arrow-purple", "spiral-arrow-orange", "zigzag-arrow-purple", "u-arrow-orange", "s-curve-black",
+  // Badges
   "badge-uus", "badge-tasuta", "badge-populaarne", "badge-pro", "badge-live", "badge-soovitatud",
-  "ring-purple-orange", "ring-purple-blue", "ring-green", "dots-purple-orange",
-  "blob-purple", "blob-orange", "blob-pink", "wave-purple", "wave-orange",
-  "airplane-purple", "airplane-orange", "highlight-purple", "highlight-orange",
+  "badge-preemium", "badge-bestseller", "badge-soodne", "badge-piiratud", "badge-tunnistus",
+  "badge-ekspert", "badge-algaja", "badge-edasijoudnud", "badge-interaktiivne", "badge-sertifikaat",
+  "badge-outline-uus", "badge-outline-tasuta", "badge-outline-preemium",
+  "badge-dot-live", "badge-dot-populaarne",
+  // Shapes
+  "ring-purple-orange", "ring-purple-blue", "ring-green", "dots-purple-orange", "scatter-dots",
+  "blob-purple", "blob-orange", "blob-pink", "blob2-purple", "blob3-orange",
+  "wave-purple", "wave-orange", "airplane-purple", "airplane-orange",
+  "star-orange", "star-purple", "hexagon-purple", "diamond-orange", "cross-purple", "triangle-orange",
+  "semicircle-purple", "concentric-purple", "highlight-purple", "highlight-orange",
+  // Frames
   "frame-solid-purple", "frame-solid-orange", "frame-dashed-purple", "frame-dashed-orange", "frame-double-purple",
+  "frame-rounded-purple", "frame-rounded-orange", "frame-circle-orange", "frame-circle-dashed-purple",
+  "frame-circle-double-orange", "frame-dotted-purple", "frame-ticket-purple", "frame-wavy-orange",
+  "frame-cornerdots-purple", "frame-squircle-orange", "frame-shield-purple", "frame-heart-purple", "frame-hexagon-orange",
+  // Icons
   "icon-book-purple", "icon-book-green", "icon-graduation-purple", "icon-graduation-blue",
   "icon-lightbulb-orange", "icon-lightbulb-red", "icon-pencil-orange", "icon-pencil-purple",
-  "dotted-purple", "dotted-orange", "dashed-purple", "dashed-orange", "wave-line-blue",
+  "icon-laptop-purple", "icon-laptop-orange", "icon-certificate-orange", "icon-chart-purple",
+  "icon-calendar-orange", "icon-clock-purple", "icon-target-orange", "icon-trophy-orange",
+  "icon-microphone-purple", "icon-globe-blue", "icon-rocket-orange", "icon-users-purple",
+  "icon-star-orange", "icon-heart-purple", "icon-play-orange", "icon-checkbadge-green",
+  "icon-mail-purple", "icon-camera-orange", "icon-shield-green", "icon-wifi-blue", "icon-bell-orange", "icon-settings-purple",
+  // Lines
+  "dotted-purple", "dotted-orange", "dashed-purple", "dashed-orange",
+  "solid-purple", "solid-orange", "double-purple", "gradient-line",
+  "wavy-line-purple", "wave-line-blue", "zigzag-line-orange", "dashdot-purple",
+  "scallop-purple", "thickthin-orange", "bracket-purple", "crosshatch-purple", "arrow-line-orange",
 ];
 
 function downloadFile(path: string, filename: string) {
