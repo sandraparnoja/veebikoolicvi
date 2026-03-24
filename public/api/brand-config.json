@@ -1,0 +1,240 @@
+{
+  "brand": "Veebikool",
+  "version": "2.0",
+  "lastUpdated": "2026-03-24",
+  "description": "Veebikool CVI — masinloetav brändikonfiguratsioon Elementor JSON mallide genereerimiseks",
+
+  "colors": {
+    "primary": {
+      "purple": {
+        "hex": "#A2146A",
+        "rgb": "162, 20, 106",
+        "elementorVar": "var(--e-global-color-primary)",
+        "elementorId": "primary",
+        "usage": "Põhivärv — logod, pealkirjad, CTA nupud"
+      },
+      "orange": {
+        "hex": "#EF8005",
+        "rgb": "239, 128, 5",
+        "elementorVar": "var(--e-global-color-secondary)",
+        "elementorId": "secondary",
+        "usage": "Sekundaarne põhivärv — rõhuasetused, ikoonid"
+      }
+    },
+    "extended": {
+      "darkPurple": {
+        "hex": "#7B0F50",
+        "rgb": "123, 15, 80",
+        "elementorVar": "var(--e-global-color-dark-purple)",
+        "elementorId": "dark-purple",
+        "usage": "Tumedam variant — hoverid, jalused"
+      },
+      "lightPurple": {
+        "hex": "#C94D94",
+        "rgb": "201, 77, 148",
+        "elementorVar": "var(--e-global-color-light-purple)",
+        "elementorId": "light-purple",
+        "usage": "Heledam variant — taustad, ääred"
+      }
+    },
+    "pastel": {
+      "pink": {
+        "hex": "#ECD9E4",
+        "rgb": "236, 217, 228",
+        "elementorVar": "var(--e-global-color-pastel-pink)",
+        "elementorId": "pastel-pink",
+        "usage": "Pastelne taust — kaardid, sektsioonid"
+      },
+      "orange": {
+        "hex": "#FFC683",
+        "rgb": "255, 198, 131",
+        "elementorVar": "var(--e-global-color-pastel-orange)",
+        "elementorId": "pastel-orange",
+        "usage": "Pastelne oranž — highlight-alad"
+      },
+      "blue": {
+        "hex": "#EFF4F9",
+        "rgb": "239, 244, 249",
+        "elementorVar": "var(--e-global-color-pastel-blue)",
+        "elementorId": "pastel-blue",
+        "usage": "Hele sinine taust — neutraalsed sektsioonid"
+      },
+      "green": {
+        "hex": "#DAF8E9",
+        "rgb": "218, 248, 233",
+        "elementorVar": "var(--e-global-color-pastel-green)",
+        "elementorId": "pastel-green",
+        "usage": "Hele roheline — edu-sõnumid"
+      }
+    },
+    "accent": {
+      "accentOrange": {
+        "hex": "#E95A0C",
+        "rgb": "233, 90, 12",
+        "elementorVar": "var(--e-global-color-accent-orange)",
+        "elementorId": "accent-orange",
+        "usage": "Tugev oranž — hoiatused, esiletõstmised"
+      },
+      "red": {
+        "hex": "#FD3D3D",
+        "rgb": "253, 61, 61",
+        "elementorVar": "var(--e-global-color-accent-red)",
+        "elementorId": "accent-red",
+        "usage": "Punane — LIVE badge, vead"
+      },
+      "green": {
+        "hex": "#369D69",
+        "rgb": "54, 157, 105",
+        "elementorVar": "var(--e-global-color-accent-green)",
+        "elementorId": "accent-green",
+        "usage": "Roheline — edukas, populaarne"
+      },
+      "blue": {
+        "hex": "#4A90D9",
+        "rgb": "74, 144, 217",
+        "elementorVar": "var(--e-global-color-accent-blue)",
+        "elementorId": "accent-blue",
+        "usage": "Sinine — info, soovitused"
+      }
+    },
+    "neutral": {
+      "white": { "hex": "#FFFFFF", "rgb": "255, 255, 255", "elementorVar": "var(--e-global-color-white)", "elementorId": "white" },
+      "lightBg": { "hex": "#F8F9FA", "rgb": "248, 249, 250", "elementorVar": "var(--e-global-color-light-bg)", "elementorId": "light-bg" },
+      "black": { "hex": "#1A1A1A", "rgb": "26, 26, 26", "elementorVar": "var(--e-global-color-text)", "elementorId": "text", "usage": "Teksti värv" }
+    }
+  },
+
+  "gradients": {
+    "purpleToOrange": { "css": "linear-gradient(135deg, #A2146A 0%, #EF8005 100%)", "usage": "Hero-sektsioonid, CTA taustad" },
+    "purpleToDark": { "css": "linear-gradient(135deg, #A2146A 0%, #7B0F50 100%)", "usage": "Nupud, jalused" },
+    "orangeToYellow": { "css": "linear-gradient(135deg, #EF8005 0%, #FFC683 100%)", "usage": "Esiletõstmised" },
+    "softPink": { "css": "linear-gradient(135deg, #ECD9E4 0%, #F8F9FA 100%)", "usage": "Kaartide taustad" },
+    "softBlue": { "css": "linear-gradient(135deg, #EFF4F9 0%, #DAF8E9 100%)", "usage": "Neutraalsed sektsioonid" },
+    "purpleToBlue": { "css": "linear-gradient(135deg, #A2146A 0%, #4A90D9 100%)", "usage": "Alternatiivne hero" },
+    "purpleToPink": { "css": "linear-gradient(135deg, #A2146A 0%, #ECD9E4 100%)", "usage": "Pehme CTA" },
+    "greenToLight": { "css": "linear-gradient(135deg, #369D69 0%, #DAF8E9 100%)", "usage": "Edu-sõnumid" }
+  },
+
+  "typography": {
+    "headingFont": {
+      "family": "Nunito Sans",
+      "googleFonts": "https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap",
+      "elementorVar": "var(--e-global-typography-primary-font-family)",
+      "elementorId": "primary",
+      "weights": { "regular": 400, "semiBold": 600, "bold": 700, "extraBold": 800, "black": 900 },
+      "usage": "Kõik pealkirjad (H1–H6), nupud, navigatsioon"
+    },
+    "bodyFont": {
+      "family": "Overpass",
+      "googleFonts": "https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;600;700&display=swap",
+      "elementorVar": "var(--e-global-typography-text-font-family)",
+      "elementorId": "text",
+      "weights": { "light": 300, "regular": 400, "semiBold": 600, "bold": 700 },
+      "usage": "Kõik kehatekst, lõigud, nimekirjad"
+    },
+    "sizes": {
+      "h1": { "size": "48px", "weight": 800, "lineHeight": "1.2", "font": "Nunito Sans", "elementorTypography": "primary" },
+      "h2": { "size": "36px", "weight": 700, "lineHeight": "1.25", "font": "Nunito Sans", "elementorTypography": "primary" },
+      "h3": { "size": "28px", "weight": 700, "lineHeight": "1.3", "font": "Nunito Sans", "elementorTypography": "primary" },
+      "h4": { "size": "22px", "weight": 600, "lineHeight": "1.35", "font": "Nunito Sans", "elementorTypography": "primary" },
+      "body": { "size": "16px", "weight": 400, "lineHeight": "1.6", "font": "Overpass", "elementorTypography": "text" },
+      "bodyLarge": { "size": "18px", "weight": 400, "lineHeight": "1.6", "font": "Overpass", "elementorTypography": "text" },
+      "small": { "size": "14px", "weight": 400, "lineHeight": "1.5", "font": "Overpass", "elementorTypography": "text" },
+      "button": { "size": "16px", "weight": 700, "lineHeight": "1", "font": "Nunito Sans", "elementorTypography": "accent" }
+    }
+  },
+
+  "logos": {
+    "full": { "url": "/brand/logos/veebikool-logo.png", "format": "PNG", "usage": "Peamine logo — päis, dokumentatsioon" },
+    "logomark": { "url": "/brand/logos/veebikool-logomark.png", "format": "PNG", "usage": "Favicon, väikesed kohad, ikoon" }
+  },
+
+  "backgrounds": {
+    "juhtimine": { "url": "/brand/backgrounds/juhtimine-bg.png", "name": "Juhtimine", "category": "Kursuse taust" },
+    "juriidika": { "url": "/brand/backgrounds/juriidika-bg.png", "name": "Juriidika", "category": "Kursuse taust" },
+    "turundus": { "url": "/brand/backgrounds/turundus-bg.png", "name": "Turundus", "category": "Kursuse taust" },
+    "muuk": { "url": "/brand/backgrounds/muuk-bg.png", "name": "Müük", "category": "Kursuse taust" },
+    "finantsid": { "url": "/brand/backgrounds/finantsid-bg.png", "name": "Finantsid", "category": "Kursuse taust" }
+  },
+
+  "designElements": {
+    "arrows": [
+      { "id": "curved-arrow-right-purple", "url": "/brand/svg/curved-arrow-right-purple.svg" },
+      { "id": "curved-arrow-right-orange", "url": "/brand/svg/curved-arrow-right-orange.svg" },
+      { "id": "curved-arrow-left-purple", "url": "/brand/svg/curved-arrow-left-purple.svg" },
+      { "id": "curved-arrow-left-orange", "url": "/brand/svg/curved-arrow-left-orange.svg" },
+      { "id": "straight-arrow-purple", "url": "/brand/svg/straight-arrow-purple.svg" },
+      { "id": "straight-arrow-orange", "url": "/brand/svg/straight-arrow-orange.svg" },
+      { "id": "wavy-arrow-purple", "url": "/brand/svg/wavy-arrow-purple.svg" },
+      { "id": "wavy-arrow-orange", "url": "/brand/svg/wavy-arrow-orange.svg" }
+    ],
+    "badges": [
+      { "id": "badge-uus", "url": "/brand/svg/badge-uus.svg" },
+      { "id": "badge-tasuta", "url": "/brand/svg/badge-tasuta.svg" },
+      { "id": "badge-populaarne", "url": "/brand/svg/badge-populaarne.svg" },
+      { "id": "badge-pro", "url": "/brand/svg/badge-pro.svg" },
+      { "id": "badge-live", "url": "/brand/svg/badge-live.svg" },
+      { "id": "badge-soovitatud", "url": "/brand/svg/badge-soovitatud.svg" }
+    ],
+    "shapes": [
+      { "id": "ring-purple-orange", "url": "/brand/svg/ring-purple-orange.svg" },
+      { "id": "ring-purple-blue", "url": "/brand/svg/ring-purple-blue.svg" },
+      { "id": "ring-green", "url": "/brand/svg/ring-green.svg" },
+      { "id": "dots-purple-orange", "url": "/brand/svg/dots-purple-orange.svg" },
+      { "id": "blob-purple", "url": "/brand/svg/blob-purple.svg" },
+      { "id": "blob-orange", "url": "/brand/svg/blob-orange.svg" },
+      { "id": "blob-pink", "url": "/brand/svg/blob-pink.svg" },
+      { "id": "wave-purple", "url": "/brand/svg/wave-purple.svg" },
+      { "id": "wave-orange", "url": "/brand/svg/wave-orange.svg" },
+      { "id": "airplane-purple", "url": "/brand/svg/airplane-purple.svg" },
+      { "id": "airplane-orange", "url": "/brand/svg/airplane-orange.svg" },
+      { "id": "highlight-purple", "url": "/brand/svg/highlight-purple.svg" },
+      { "id": "highlight-orange", "url": "/brand/svg/highlight-orange.svg" }
+    ],
+    "frames": [
+      { "id": "frame-solid-purple", "url": "/brand/svg/frame-solid-purple.svg" },
+      { "id": "frame-solid-orange", "url": "/brand/svg/frame-solid-orange.svg" },
+      { "id": "frame-dashed-purple", "url": "/brand/svg/frame-dashed-purple.svg" },
+      { "id": "frame-dashed-orange", "url": "/brand/svg/frame-dashed-orange.svg" },
+      { "id": "frame-double-purple", "url": "/brand/svg/frame-double-purple.svg" }
+    ],
+    "icons": [
+      { "id": "icon-book-purple", "url": "/brand/svg/icon-book-purple.svg" },
+      { "id": "icon-book-green", "url": "/brand/svg/icon-book-green.svg" },
+      { "id": "icon-graduation-purple", "url": "/brand/svg/icon-graduation-purple.svg" },
+      { "id": "icon-graduation-blue", "url": "/brand/svg/icon-graduation-blue.svg" },
+      { "id": "icon-lightbulb-orange", "url": "/brand/svg/icon-lightbulb-orange.svg" },
+      { "id": "icon-lightbulb-red", "url": "/brand/svg/icon-lightbulb-red.svg" },
+      { "id": "icon-pencil-orange", "url": "/brand/svg/icon-pencil-orange.svg" },
+      { "id": "icon-pencil-purple", "url": "/brand/svg/icon-pencil-purple.svg" }
+    ],
+    "lines": [
+      { "id": "dotted-purple", "url": "/brand/svg/dotted-purple.svg" },
+      { "id": "dotted-orange", "url": "/brand/svg/dotted-orange.svg" },
+      { "id": "dashed-purple", "url": "/brand/svg/dashed-purple.svg" },
+      { "id": "dashed-orange", "url": "/brand/svg/dashed-orange.svg" },
+      { "id": "wave-line-blue", "url": "/brand/svg/wave-line-blue.svg" }
+    ]
+  },
+
+  "spacing": {
+    "sectionPadding": "80px 0",
+    "containerMaxWidth": "1200px",
+    "cardPadding": "32px",
+    "buttonPadding": "16px 32px",
+    "gap": "24px"
+  },
+
+  "borderRadius": {
+    "button": "50px",
+    "card": "16px",
+    "badge": "18px",
+    "image": "12px"
+  },
+
+  "shadows": {
+    "card": "0 4px 20px rgba(162, 20, 106, 0.08)",
+    "button": "0 4px 12px rgba(162, 20, 106, 0.2)",
+    "hover": "0 8px 30px rgba(162, 20, 106, 0.15)"
+  }
+}
