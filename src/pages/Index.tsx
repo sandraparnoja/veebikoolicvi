@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { getAllElements, ELEMENT_CATEGORIES, downloadElementAsPng, downloadSvg } from "@/components/DesignElements";
 import { Button } from "@/components/ui/button";
-import { Download, Copy, Check } from "lucide-react";
+import { Download, Copy, Check, Package } from "lucide-react";
 import { toast } from "sonner";
 import veebikoolLogo from "@/assets/veebikool-logo.png";
 import veebikoolLogomark from "@/assets/veebikool-logomark.png";
