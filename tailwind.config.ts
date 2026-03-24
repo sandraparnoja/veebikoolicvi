@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        heading: ['"Nunito Sans"', 'sans-serif'],
+        body: ['"Overpass"', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,6 +51,22 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Brand colors
+        brand: {
+          purple: "#A2146A",
+          orange: "#EF8005",
+          "dark-purple": "#7B0F50",
+          "light-purple": "#C94D94",
+          "pastel-pink": "#ECD9E4",
+          "pastel-orange": "#FFC683",
+          "pastel-blue": "#EFF4F9",
+          "pastel-green": "#DAF8E9",
+          "light-bg": "#F8F9FA",
+          "accent-orange": "#E95A0C",
+          "accent-red": "#FD3D3D",
+          "accent-green": "#369D69",
+          "accent-blue": "#4A90D9",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -65,20 +85,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
