@@ -1,38 +1,50 @@
 
-# Veebikool CVI Täiustamine — Plaan
 
-## 1. Täiustatud CVI PDF-juhend
-Loon uue, visuaalselt atraktiivsema CVI PDF-dokumendi, mis sisaldab:
-- **Kaaneleht** — uuendatud kujundusega, gradient-taustad
-- **Logo kasutamine** — olemasolevad reeglid + uued logo variatsioonid
-- **Värvid** — olemasolevad + laiendatud palett (gradient-kombinatsioonid)
-- **Tüpograafia** — Nunito Sans + Overpass reeglid
-- **UUED kujunduselemendid:**
-  - Dekoratiivsed nooled ja suunanäitajad (brändivärvidest)
-  - Ümardatud badge'id ja sildid (highlight-kastide laiendus)
-  - Dekoratiivsed kujundid (ringid, lained, gradient-blobid)
-  - Raamid ja piirjooned (fotode ja sisu jaoks)
-  - Paberlennuki variatsioonid
-  - Ikoonide stiil (outline-stiilis ikoonid brändivärvidest)
-- **Taustad** — olemasolevad + uued gradient-variatsioonid
+# Plaan: Masinloetav brändifailide pakett Claude Code jaoks
 
-## 2. Interaktiivne veebileht (Brand Toolkit)
-Ehitan Reactiga veebilehe, kus:
-- **Navigatsioon** sektsioonide vahel (Logo, Värvid, Tüpograafia, Elemendid, Taustad)
-- **Värvide sektsioon** — kõik värvid koos HEX/RGB koopimise nupuga
-- **Kujunduselemendid** — SVG-põhised elemendid (nooled, badge'id, kujundid, raamid) kuvatud ruudustikus
-- **Iga element eraldi allalaetav** PNG-na läbipaistva taustaga (canvas → PNG eksport)
-- **Taustad** — gradient-taustad allalaetavana
-- Veebikool brändi värvid ja fondid kasutuses kogu lehel
+## Probleem
+Claude Code ei pääse veebilehe kaudu ligi SVG-failidele, värvikoodidele ega pildiressurssidele. Ta vajab struktureeritud faile, mida saab otse lugeda ja kasutada Elementor JSON mallide genereerimiseks.
 
-### Kujunduselemendid mida loon:
-1. **Nooled** — kumerad, sirged, suunanäitajad (purple & orange)
-2. **Badge'id** — ümardatud kastid erinevates brändivärvidest
-3. **Dekoratiivsed ringid** — gradient-ringid, täpid
-4. **Lained** — wave-kujundid sektsioonide eraldamiseks  
-5. **Blob-kujundid** — orgaanilised vormid taustadeks
-6. **Raamid** — pildiraamid erinevates stiilides
-7. **Paberlennuk** — erinevad asendid ja suurused
-8. **Highlight-kastid** — erinevates brändivärvidest
-9. **Ikoonid** — haridusega seotud ikoonid brändistiilis
-10. **Dekoratiivsed jooned** — kriipsjooned, punktiirid
+## Lahendus
+Loon `public/brand/` kausta, kuhu paigutatakse kõik brändiressursid masinloetavas formaadis:
+
+### 1. `public/brand/brand-config.json`
+Täielik brändijuhis JSON-formaadis:
+- Kõik värvid (põhi, pastel, aktsent) HEX + RGB kujul
+- Fondid ja tüpograafia reeglid (suurused, kaalud)
+- Gradientide definitsioonid (CSS-valmis)
+- Elementide nimekiri koos viitega SVG-failidele
+- Taustapiltide nimekiri koos failinimede ja kategooriatega
+- Logode nimekiri
+
+### 2. `public/brand/svg/` — Kõik SVG-d eraldi failidena
+Iga kujunduselement salvestatakse eraldi `.svg` failina:
+- `curved-arrow-right-purple.svg`, `curved-arrow-right-orange.svg`
+- `badge-uus.svg`, `badge-tasuta.svg`, `badge-populaarne.svg` jne
+- `blob-purple.svg`, `wave-purple.svg`, `frame-solid-purple.svg` jne
+- Kõik ~45 elementi `DesignElements.tsx`-st
+
+### 3. `public/brand/logos/` — Logod
+- Kopeeritakse `src/assets/` logofailid siia (avalikult ligipääsetav)
+
+### 4. `public/brand/backgrounds/` — Taustad
+- Kopeeritakse `src/assets/` taustapildid siia
+
+### 5. `public/brand/README.md`
+Lühijuhend Claude Code'ile:
+- Kuidas lugeda `brand-config.json`
+- Kuidas viidata SVG/PNG failidele
+- Elementor JSON malli struktuur ja näide
+
+## Tehniline teostus
+- SVG-d genereeritakse `DesignElements.tsx` komponentidest staatiliste failidena
+- `brand-config.json` sisaldab kõiki värve, fonte ja failiviiteid
+- Kõik failid `public/` kaustas = ligipääsetavad URL-i kaudu (nt `https://site.com/brand/svg/blob-purple.svg`)
+- Claude Code saab lugeda nii failisüsteemist otse kui ka URL-i kaudu
+
+## Tulemus
+Claude Code saab:
+1. Lugeda `brand-config.json` → teab kõiki värve, fonte, gradiente
+2. Kasutada SVG-faile otse Elementor JSON-is piltidena
+3. Genereerida Elementor JSON maandumislehti, mis järgivad CVI-d täpselt
+
