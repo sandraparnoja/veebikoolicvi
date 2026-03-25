@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Download, FileJson, Image, Package, ArrowLeft, Loader2 } from "lucide-react";
+import { Download, FileJson, Image, Package, ArrowLeft, Loader2, BookOpen } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import JSZip from "jszip";
@@ -80,6 +80,11 @@ export default function Downloads() {
       const configText = await configRes.text();
       zip.file("brand-config.json", configText);
 
+      // Fetch and add AI guide
+      const guideRes = await fetch("/brand/veebikool-ai-juhend.md");
+      const guideText = await guideRes.text();
+      zip.file("veebikool-ai-juhend.md", guideText);
+
       // Fetch and add logos
       const logosFolder = zip.folder("logos");
       for (const logo of LOGO_FILES) {
@@ -155,6 +160,37 @@ export default function Downloads() {
               </>
             )}
           </Button>
+        </section>
+
+        {/* AI Guide */}
+        <section>
+          <h2 className="text-lg font-heading font-bold text-foreground mb-2">AI juhend</h2>
+          <p className="text-sm text-muted-foreground font-body mb-6">Täielik juhend AI-le (Claude, ChatGPT, Copilot) maandumislehtede ja mallide genereerimiseks</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={() => downloadFile("/brand/veebikool-ai-juhend.md", "veebikool-ai-juhend.md")}
+              className="group flex items-center gap-3 rounded-2xl border border-border bg-white p-5 hover:border-primary/20 hover:shadow-sm transition-all"
+            >
+              <BookOpen className="w-8 h-8 text-primary shrink-0" />
+              <div className="text-left">
+                <p className="text-sm font-heading font-bold text-foreground">veebikool-ai-juhend.md</p>
+                <p className="text-xs text-muted-foreground">Värvid, fondid, SVG elemendid, Elementor JSON mallid, reeglid</p>
+              </div>
+              <Download className="w-4 h-4 text-muted-foreground group-hover:text-foreground ml-auto transition-colors" />
+            </button>
+            <a
+              href="/brand/veebikool-ai-juhend.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 rounded-2xl border border-border bg-white p-5 hover:border-primary/20 hover:shadow-sm transition-all"
+            >
+              <BookOpen className="w-8 h-8 text-secondary shrink-0" />
+              <div className="text-left">
+                <p className="text-sm font-heading font-bold text-foreground">Vaata brauseris</p>
+                <p className="text-xs text-muted-foreground">/brand/veebikool-ai-juhend.md</p>
+              </div>
+            </a>
+          </div>
         </section>
 
         {/* Brand Config JSON */}
