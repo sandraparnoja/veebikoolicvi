@@ -80,6 +80,11 @@ export default function Downloads() {
       const configText = await configRes.text();
       zip.file("brand-config.json", configText);
 
+      // Fetch and add AI guide
+      const guideRes = await fetch("/brand/veebikool-ai-juhend.md");
+      const guideText = await guideRes.text();
+      zip.file("veebikool-ai-juhend.md", guideText);
+
       // Fetch and add logos
       const logosFolder = zip.folder("logos");
       for (const logo of LOGO_FILES) {
