@@ -119,7 +119,7 @@ export default function Index() {
         {/* Logo Section */}
         <section>
           <h2 className="text-lg font-heading font-bold text-black mb-2">Logo</h2>
-          <p className="text-sm text-gray-400 font-body mb-8">Täislogo ja logomärk — allalaetavad PNG-na</p>
+          <p className="text-sm text-gray-400 font-body mb-8">Täislogo ja logomärk. Allalaetavad PNG-na</p>
           <div className="grid sm:grid-cols-2 gap-6">
             <div className="group relative rounded-2xl border border-gray-100 bg-gray-50/40 p-10 flex items-center justify-center min-h-[140px] hover:bg-gray-50 transition-colors">
               <img src={veebikoolLogo} alt="Veebikool täislogo" className="max-h-16 w-auto" />
