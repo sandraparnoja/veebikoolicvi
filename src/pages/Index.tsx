@@ -132,12 +132,24 @@ export default function Index() {
             <h1 className="text-3xl font-heading font-extrabold text-black tracking-tight">Brand Toolkit</h1>
             <p className="text-sm text-gray-400 font-body mt-0.5">Kujunduselementide kogu · Veebikool CVI</p>
           </div>
-          <Link to="/downloads">
-            <Button variant="outline" size="sm" className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300">
-              <Package className="w-4 h-4" />
-              Allalaadimised
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleExportToSivi}
+              disabled={exporting}
+              className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300"
+            >
+              {exporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+              Ekspordi Sivisse
             </Button>
-          </Link>
+            <Link to="/downloads">
+              <Button variant="outline" size="sm" className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300">
+                <Package className="w-4 h-4" />
+                Allalaadimised
+              </Button>
+            </Link>
+          </div>
         </div>
       </header>
 
