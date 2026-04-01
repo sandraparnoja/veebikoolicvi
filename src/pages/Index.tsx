@@ -83,34 +83,34 @@ function downloadImage(src: string, filename: string) {
   link.click();
 }
 
+const BRAND_API_URL = "https://veebikoolicvi.lovable.app/brand/brand-config.json";
+const AI_GUIDE_PATH = "/brand/veebikool-ai-juhend.md";
+
 export default function Index() {
   const [activeCategory, setActiveCategory] = useState<string>("Kõik");
-  const [exporting, setExporting] = useState(false);
+  const [copiedAi, setCopiedAi] = useState(false);
+  const [copiedApi, setCopiedApi] = useState(false);
   const elements = getAllElements();
   const filtered = activeCategory === "Kõik" ? elements : elements.filter((e) => e.category === activeCategory);
 
-  const handleExportToSivi = async () => {
-    setExporting(true);
+  const handleCopyForAi = async () => {
     try {
-      const res = await fetch("/brand/brand-config.json");
-      const brandConfig = await res.json();
-
-      const logoUrl = "https://veebikoolicvi.lovable.app/brand/logos/veebikool-logo.png";
-
-      const { data, error } = await supabase.functions.invoke("export-brand-to-sivi", {
-        body: { brandConfig, logoUrl },
-      });
-
-      if (error) throw error;
-      if (data?.error) throw new Error(data.error);
-
-      toast.success("Bränd edukalt Sivisse eksporditud! 🎉");
-    } catch (err: any) {
-      console.error("Sivi export error:", err);
-      toast.error(`Eksportimine ebaõnnestus: ${err.message || "Tundmatu viga"}`);
-    } finally {
-      setExporting(false);
+      const res = await fetch(AI_GUIDE_PATH);
+      const text = await res.text();
+      await navigator.clipboard.writeText(text);
+      setCopiedAi(true);
+      toast.success("AI brändijuhend kopeeritud lõikelauale! 📋");
+      setTimeout(() => setCopiedAi(false), 2000);
+    } catch (err) {
+      toast.error("Kopeerimine ebaõnnestus");
     }
+  };
+
+  const handleCopyApiLink = async () => {
+    await navigator.clipboard.writeText(BRAND_API_URL);
+    setCopiedApi(true);
+    toast.success("API link kopeeritud! 🔗");
+    setTimeout(() => setCopiedApi(false), 2000);
   };
 
   const backgrounds = [
