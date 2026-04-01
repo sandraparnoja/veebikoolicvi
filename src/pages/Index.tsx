@@ -2,9 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllElements, ELEMENT_CATEGORIES, downloadElementAsPng, downloadSvg } from "@/components/DesignElements";
 import { Button } from "@/components/ui/button";
-import { Download, Copy, Check, Package, Upload, Loader2 } from "lucide-react";
+import { Download, Copy, Check, Package, Bot, Link as LinkIcon } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
 import veebikoolLogo from "@/assets/veebikool-logo.png";
 import veebikoolLogomark from "@/assets/veebikool-logomark.png";
 import bgJuhtimine from "@/assets/bg-juhtimine.png";
@@ -84,34 +83,34 @@ function downloadImage(src: string, filename: string) {
   link.click();
 }
 
+const BRAND_API_URL = "https://veebikoolicvi.lovable.app/brand/brand-config.json";
+const AI_GUIDE_PATH = "/brand/veebikool-ai-juhend.md";
+
 export default function Index() {
   const [activeCategory, setActiveCategory] = useState<string>("Kõik");
-  const [exporting, setExporting] = useState(false);
+  const [copiedAi, setCopiedAi] = useState(false);
+  const [copiedApi, setCopiedApi] = useState(false);
   const elements = getAllElements();
   const filtered = activeCategory === "Kõik" ? elements : elements.filter((e) => e.category === activeCategory);
 
-  const handleExportToSivi = async () => {
-    setExporting(true);
+  const handleCopyForAi = async () => {
     try {
-      const res = await fetch("/brand/brand-config.json");
-      const brandConfig = await res.json();
-
-      const logoUrl = "https://veebikoolicvi.lovable.app/brand/logos/veebikool-logo.png";
-
-      const { data, error } = await supabase.functions.invoke("export-brand-to-sivi", {
-        body: { brandConfig, logoUrl },
-      });
-
-      if (error) throw error;
-      if (data?.error) throw new Error(data.error);
-
-      toast.success("Bränd edukalt Sivisse eksporditud! 🎉");
-    } catch (err: any) {
-      console.error("Sivi export error:", err);
-      toast.error(`Eksportimine ebaõnnestus: ${err.message || "Tundmatu viga"}`);
-    } finally {
-      setExporting(false);
+      const res = await fetch(AI_GUIDE_PATH);
+      const text = await res.text();
+      await navigator.clipboard.writeText(text);
+      setCopiedAi(true);
+      toast.success("AI brändijuhend kopeeritud lõikelauale! 📋");
+      setTimeout(() => setCopiedAi(false), 2000);
+    } catch (err) {
+      toast.error("Kopeerimine ebaõnnestus");
     }
+  };
+
+  const handleCopyApiLink = async () => {
+    await navigator.clipboard.writeText(BRAND_API_URL);
+    setCopiedApi(true);
+    toast.success("API link kopeeritud! 🔗");
+    setTimeout(() => setCopiedApi(false), 2000);
   };
 
   const backgrounds = [
@@ -136,12 +135,20 @@ export default function Index() {
             <Button
               variant="outline"
               size="sm"
-              onClick={handleExportToSivi}
-              disabled={exporting}
+              onClick={handleCopyForAi}
               className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300"
             >
-              {exporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
-              Ekspordi Sivisse
+              {copiedAi ? <Check className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+              {copiedAi ? "Kopeeritud!" : "Kopeeri AI-le"}
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleCopyApiLink}
+              className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300"
+            >
+              {copiedApi ? <Check className="w-4 h-4" /> : <LinkIcon className="w-4 h-4" />}
+              {copiedApi ? "Kopeeritud!" : "API link"}
             </Button>
             <Link to="/downloads">
               <Button variant="outline" size="sm" className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300">
@@ -328,6 +335,53 @@ export default function Index() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* AI Access */}
+        <section>
+          <h2 className="text-lg font-heading font-bold text-black mb-2">AI ligipääs</h2>
+          <p className="text-sm text-gray-400 font-body mb-8">Jaga brändijuhendit AI tööriistadega — Claude, ChatGPT, Replit, Cursor jt</p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="rounded-2xl border border-gray-100 p-8">
+              <div className="flex items-center gap-2 mb-4">
+                <Bot className="w-4 h-4 text-gray-400" />
+                <p className="text-[10px] text-gray-400 font-heading font-bold uppercase tracking-widest">AI brändijuhend</p>
+              </div>
+              <p className="text-sm text-gray-500 font-body mb-5">
+                Markdown-formaadis juhend, mis sisaldab kõiki värve, fonte, tooni ja kujunduselemente. Kopeeri ja kleebi otse AI vestlusesse.
+              </p>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleCopyForAi}
+                className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300"
+              >
+                {copiedAi ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                {copiedAi ? "Kopeeritud!" : "Kopeeri lõikelauale"}
+              </Button>
+            </div>
+
+            <div className="rounded-2xl border border-gray-100 p-8">
+              <div className="flex items-center gap-2 mb-4">
+                <LinkIcon className="w-4 h-4 text-gray-400" />
+                <p className="text-[10px] text-gray-400 font-heading font-bold uppercase tracking-widest">API endpoint</p>
+              </div>
+              <p className="text-sm text-gray-500 font-body mb-3">
+                Masinloetav JSON — kasuta otse koodis või anna AI-le URL.
+              </p>
+              <code className="block text-xs font-mono bg-gray-50 rounded-lg px-3 py-2 text-gray-600 mb-4 break-all">{BRAND_API_URL}</code>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleCopyApiLink}
+                className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300"
+              >
+                {copiedApi ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                {copiedApi ? "Kopeeritud!" : "Kopeeri link"}
+              </Button>
+            </div>
           </div>
         </section>
       </main>
