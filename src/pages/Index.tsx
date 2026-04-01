@@ -135,12 +135,20 @@ export default function Index() {
             <Button
               variant="outline"
               size="sm"
-              onClick={handleExportToSivi}
-              disabled={exporting}
+              onClick={handleCopyForAi}
               className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300"
             >
-              {exporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
-              Ekspordi Sivisse
+              {copiedAi ? <Check className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+              {copiedAi ? "Kopeeritud!" : "Kopeeri AI-le"}
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleCopyApiLink}
+              className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300"
+            >
+              {copiedApi ? <Check className="w-4 h-4" /> : <LinkIcon className="w-4 h-4" />}
+              {copiedApi ? "Kopeeritud!" : "API link"}
             </Button>
             <Link to="/downloads">
               <Button variant="outline" size="sm" className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300">
