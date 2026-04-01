@@ -1,21 +1,38 @@
 
 
-## Plaan: Gradient-taustade heledamaks muutmine
+## Plaan: Veebikool brändi eksport Sivi API-sse
 
-Praegu on gradient-taustad (read 278-292) tugevate, küllastunud värvidega (nt `#A2146A → #EF8005`). Muudan need heledateks pastellseteks versioonideks, mis sobivad kokku ülejäänud lehe valge/heleda stiiliga.
+### Mida teeme
+Lisame CVI lehele nupu "Ekspordi Sivisse", mis saadab sinu brändi andmed (värvid, logo, fondid, kirjeldus) Sivi API `set-brand-manual` endpointi. Pärast seda tunneb Sivi sinu brändi ja genereerib disaine sinu stiilis.
 
-### Muudatused failis `src/pages/Index.tsx` (read 278-285)
+### Sammud
 
-Asendan praegused gradientvärvid heledamate variantidega:
+**1. Sivi API võtme salvestamine**
+- Küsime sinult Sivi API võtit (saad selle aadressilt https://instant.sivi.ai/#/settings)
+- Salvestame selle turvalise secretina
 
-| Nimi | Praegu | Uus |
-|------|--------|-----|
-| Peamine | `#A2146A → #EF8005` | `#ECD9E4 → #FFC683` |
-| Tume | `#7B0F50 → #A2146A` | `#E8D0DE → #ECD9E4` |
-| Soe | `#EF8005 → #FFC683` | `#FFC683 → #FFF0DC` |
-| Sinine | `#A2146A → #4A90D9` | `#ECD9E4 → #EFF4F9` |
-| Roosa | `#A2146A → #ECD9E4` | `#F3E4ED → #FAF5F8` |
-| Roheline | `#369D69 → #DAF8E9` | `#DAF8E9 → #F0FBF5` |
+**2. Edge function: `export-brand-to-sivi`**
+- Loeme brändi andmed request bodyst
+- Saadame Sivi API-sse `POST https://connect.sivi.ai/api/prod/v2/general/set-brand-manual`
+- Header: `sivi-api-key: <secret>`
+- Request body mappib sinu brand-config.json andmed Sivi formaati:
 
-Tulemus: kõik gradient-taustad on heledad pastelltoonides, kooskõlas lehe üldise minimalistliku stiiliga.
+```text
+brand-config.json          →  Sivi API
+─────────────────────────────────────────
+brand: "Veebikool"         →  brandName
+colors.primary.*           →  brandColors
+typography.headingFont     →  brandFonts
+logos[0].file               →  brandLogo (avalik URL)
+```
+
+**3. UI nupp Index.tsx lehel**
+- Lisame "Ekspordi Sivisse" nupu CVI lehe ülaossa
+- Nupp kutsub edge functionit
+- Näitab toast-teadet edu/vea korral
+
+### Tehniline detail
+- Sivi `set-brand-manual` endpoint ootab: `brandName`, `brandDescription`, `brandColors` (hex massiiv), `brandFonts` (massiiv), `brandLogo` (URL), `brandUrl`
+- Logo URL peab olema avalikult ligipääsetav — kasutame sinu published URL-i: `https://veebikoolicvi.lovable.app/brand/logos/veebikool-logo.png`
+- Eeldab Lovable Cloud olemasolu edge function jaoks
 
