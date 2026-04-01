@@ -1,58 +1,60 @@
 
+Eesmärk: taastada GitHubi ühendus olukorras, kus Lovable näitab "Connected", aga GitHubi repo URL annab 404 ja uuendused ei ilmu.
 
-# Veebikool CVI — API Endpoint + Downloads leht + Elementor muutujad
+1. Tõenäoline põhjus
+- Sinu kirjeldus viitab sellele, et Lovable projekt on seotud repo viitega, mis GitHubis enam ei eksisteeri või pole sinu praeguse konto all nähtav.
+- Kuna GitHubis näed 404 ja repot pole ka "Repositories" nimekirjas, siis probleem ei paista olevat lihtsalt "sync hilineb", vaid pigem katkine repo-seos.
+- Tähtis: Lovables vajutatud "Update" puudutab avaldatud veebilehte; GitHubi sync käib eraldi repo-ühenduse kaudu. Frontend koodimuudatus peaks GitHubi jõudma ainult siis, kui repo-seos on korras.
 
-## Mida teeme
+2. Kontrollplaan
+- Ava GitHubis oma profiili ja private repos nimekiri.
+- Otsi mõlemat võimalikku repo nimekuju, mis vestluses ja ekraanipiltidel on läbi käinud:
+  - `veebikoolicvi-d6c425e6`
+  - `veebikoolicvi-59a6144d`
+- Kui kumbagi pole olemas, siis praegune ühendus viitab sisuliselt "kadunud" repole.
+- Kui repo on olemas mõne teise konto või organisatsiooni all, siis on Lovable ühendatud vale account/org kontekstiga.
 
-1. **`/api/brand-config` endpoint** — kuna see on client-side React rakendus (ilma backendita), loome selle **staatilise JSON failina** `public/api/brand-config.json`, mis on avalikult ligipääsetav URL-i `/api/brand-config.json` kaudu. See sisaldab Elementor CSS muutujate nimesid (`--e-global-color-*`, `--e-global-typography-*`) kõigi värvide ja fontide jaoks.
+3. Paranduse plaan
+- Katkesta GitHub ühendus Lovables uuesti.
+- Ühenda GitHub tagasi nii, et valid õigesti sama GitHub konto/organisatsiooni, kuhu repo peab tekkima.
+- Loo ühendamisel uus repo, mitte ära looda vana 404 lingi taastumisele.
+- Kui Lovable pakub olemasoleva katkise repo külge sidumist, siis eelista uue repo loomist.
 
-2. **`/downloads` leht** — uus React leht, kus:
-   - "Laadi alla kõik CVI failid (ZIP)" nupp (kasutab JSZip teeki kliendipoolseks ZIP-genereerimiseks)
-   - Eraldi allalaadimislingid: logo PNG, logomark PNG, kõik taustapildid, brand-config.json
-   - Kõik SVG-d allalaetavad
+4. Pärast taasühendamist
+- Tee üks väga väike frontend muudatus projektis.
+- Oota lühidalt ja ava uus repo GitHubis otse profiili "Repositories" nimekirjast, mitte vana bookmarki või vana URL-i kaudu.
+- Kontrolli, kas ilmub vähemalt esimene commit ja projekti failid.
 
-3. **Pildifailid juba avalikud** — `public/brand/` kaustas on logo, logomark ja taustad juba olemas. Lisame puuduvad viited ja tagame korrektsed URL-id.
+5. Kui ka uus ühendus ei tööta
+- Kontrolli GitHub App õigusi selle konto/organisatsiooni peal.
+- Kui kasutad mitut GitHub kontot brauseris, logi teistest välja või ava protsess inkognito aknas, et vältida vale konto külge ühendamist.
+- Kui repo loomine õnnestub, aga uued commitid ikka ei ilmu, siis järgmine kahtlus on default branch:
+  - kontrolli, et repo vaikimisi haru on `main`
+  - ära testi branchiga, mis pole default branch
 
-4. **brand-config.json täiustamine** — lisame:
-   - Elementor muutujate nimed igale värvile ja fondile
-   - Avalikud URL-id (suhteline tee) kõigile logodele ja taustadele
-   - Spacing ja border-radius väärtused (juba olemas `elementorGuidelines` all, aga struktureerime ümber)
-
-## Tehniline teostus
-
-### Uued failid
-- `public/api/brand-config.json` — laiendatud JSON koos Elementor muutujatega
-- `src/pages/Downloads.tsx` — allalaadimiste leht
-
-### Muudetavad failid
-- `src/App.tsx` — lisame `/downloads` route
-- `public/brand/brand-config.json` — lisame Elementor muutujad ja avalikud URL-id
-
-### Sõltuvused
-- **JSZip** — kliendipoolne ZIP-genereerimine (npm pakett)
-
-### brand-config.json struktuur (täiustatud)
+6. Soovitatud teostusjärjekord
 ```text
-colors.primary.purple:
-  hex: "#A2146A"
-  elementorVar: "var(--e-global-color-primary)"
-  
-typography.headingFont:
-  family: "Nunito Sans"
-  elementorVar: "var(--e-global-typography-primary)"
-
-logos:
-  full: { url: "/brand/logos/veebikool-logo.png" }
-  logomark: { url: "/brand/logos/veebikool-logomark.png" }
-
-backgrounds:
-  juhtimine: { url: "/brand/backgrounds/juhtimine-bg.png" }
-  ...
+Lovable Settings → GitHub → Disconnect
+GitHubis kontrolli konto/org ja private repos
+Lovable Settings → GitHub → Connect project
+Vali õige konto/org
+Loo uus repo
+Tee väike koodimuudatus
+Kontrolli uut repo URL-i GitHubi repo listist
 ```
 
-### Downloads lehe ülesehitus
-- Hero sektsioon brändivärvidega
-- "Laadi alla kõik (ZIP)" suur nupp
-- Kategooriate kaupa: Logod, Taustad, Kujunduselemendid (SVG), brand-config.json
-- Iga faili kõrval allalaadimise ikoon
+7. Tehnilised märkused
+- 404 GitHubis tähendab tavaliselt ühte neist:
+  - repo on kustutatud
+  - repo on ümber nimetatud või liigutatud
+  - repo on teise konto/org all
+  - Lovable ühendus jäi vana repo identifikaatori külge
+- "Update" nupu vajutamine ei ole GitHub synci kinnitus; see uuendab avaldatud frontendit.
+- Kuna sul on 404 + repo ei ilmu nimekirjas, on kõige mõistlikum taastumisviis uus puhas repo-ühendus, mitte vana lingi parandamine.
 
+8. Minu soovitus sinu juhtumi jaoks
+- Ära proovi enam vana repo linki päästa.
+- Tee uus ühendus ja lase Lovablel luua täiesti uus repo õigesse GitHub kontosse.
+- Pärast seda testi ühe väikese frontend muudatusega, kas commit tekib.
+
+Kui soovid, järgmine samm plaanis oleks koostada sulle täpselt sinu ekraani järgi lühike "kliki siia, siis siia" juhis desktopi ja mobiili jaoks, et uus GitHub ühendus korrektselt nullist uuesti teha.
