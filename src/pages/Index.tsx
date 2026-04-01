@@ -337,6 +337,53 @@ export default function Index() {
             ))}
           </div>
         </section>
+
+        {/* AI Access */}
+        <section>
+          <h2 className="text-lg font-heading font-bold text-black mb-2">AI ligipääs</h2>
+          <p className="text-sm text-gray-400 font-body mb-8">Jaga brändijuhendit AI tööriistadega — Claude, ChatGPT, Replit, Cursor jt</p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="rounded-2xl border border-gray-100 p-8">
+              <div className="flex items-center gap-2 mb-4">
+                <Bot className="w-4 h-4 text-gray-400" />
+                <p className="text-[10px] text-gray-400 font-heading font-bold uppercase tracking-widest">AI brändijuhend</p>
+              </div>
+              <p className="text-sm text-gray-500 font-body mb-5">
+                Markdown-formaadis juhend, mis sisaldab kõiki värve, fonte, tooni ja kujunduselemente. Kopeeri ja kleebi otse AI vestlusesse.
+              </p>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleCopyForAi}
+                className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300"
+              >
+                {copiedAi ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                {copiedAi ? "Kopeeritud!" : "Kopeeri lõikelauale"}
+              </Button>
+            </div>
+
+            <div className="rounded-2xl border border-gray-100 p-8">
+              <div className="flex items-center gap-2 mb-4">
+                <LinkIcon className="w-4 h-4 text-gray-400" />
+                <p className="text-[10px] text-gray-400 font-heading font-bold uppercase tracking-widest">API endpoint</p>
+              </div>
+              <p className="text-sm text-gray-500 font-body mb-3">
+                Masinloetav JSON — kasuta otse koodis või anna AI-le URL.
+              </p>
+              <code className="block text-xs font-mono bg-gray-50 rounded-lg px-3 py-2 text-gray-600 mb-4 break-all">{BRAND_API_URL}</code>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleCopyApiLink}
+                className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300"
+              >
+                {copiedApi ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                {copiedApi ? "Kopeeritud!" : "Kopeeri link"}
+              </Button>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="border-t border-gray-100 py-10">
