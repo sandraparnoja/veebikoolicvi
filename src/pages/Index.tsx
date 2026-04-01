@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllElements, ELEMENT_CATEGORIES, downloadElementAsPng, downloadSvg } from "@/components/DesignElements";
 import { Button } from "@/components/ui/button";
-import { Download, Copy, Check, Package } from "lucide-react";
+import { Download, Copy, Check, Package, Upload, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import veebikoolLogo from "@/assets/veebikool-logo.png";
 import veebikoolLogomark from "@/assets/veebikool-logomark.png";
 import bgJuhtimine from "@/assets/bg-juhtimine.png";
@@ -85,8 +86,33 @@ function downloadImage(src: string, filename: string) {
 
 export default function Index() {
   const [activeCategory, setActiveCategory] = useState<string>("Kõik");
+  const [exporting, setExporting] = useState(false);
   const elements = getAllElements();
   const filtered = activeCategory === "Kõik" ? elements : elements.filter((e) => e.category === activeCategory);
+
+  const handleExportToSivi = async () => {
+    setExporting(true);
+    try {
+      const res = await fetch("/brand/brand-config.json");
+      const brandConfig = await res.json();
+
+      const logoUrl = "https://veebikoolicvi.lovable.app/brand/logos/veebikool-logo.png";
+
+      const { data, error } = await supabase.functions.invoke("export-brand-to-sivi", {
+        body: { brandConfig, logoUrl },
+      });
+
+      if (error) throw error;
+      if (data?.error) throw new Error(data.error);
+
+      toast.success("Bränd edukalt Sivisse eksporditud! 🎉");
+    } catch (err: any) {
+      console.error("Sivi export error:", err);
+      toast.error(`Eksportimine ebaõnnestus: ${err.message || "Tundmatu viga"}`);
+    } finally {
+      setExporting(false);
+    }
+  };
 
   const backgrounds = [
     { name: "Juhtimine", src: bgJuhtimine, file: "juhtimine-bg.png" },
@@ -106,12 +132,24 @@ export default function Index() {
             <h1 className="text-3xl font-heading font-extrabold text-black tracking-tight">Brand Toolkit</h1>
             <p className="text-sm text-gray-400 font-body mt-0.5">Kujunduselementide kogu · Veebikool CVI</p>
           </div>
-          <Link to="/downloads">
-            <Button variant="outline" size="sm" className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300">
-              <Package className="w-4 h-4" />
-              Allalaadimised
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleExportToSivi}
+              disabled={exporting}
+              className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300"
+            >
+              {exporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+              Ekspordi Sivisse
             </Button>
-          </Link>
+            <Link to="/downloads">
+              <Button variant="outline" size="sm" className="gap-2 rounded-full border-gray-200 text-gray-600 hover:text-black hover:border-gray-300">
+                <Package className="w-4 h-4" />
+                Allalaadimised
+              </Button>
+            </Link>
+          </div>
         </div>
       </header>
 
