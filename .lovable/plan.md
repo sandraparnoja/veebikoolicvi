@@ -1,60 +1,83 @@
 
-Eesmärk: taastada GitHubi ühendus olukorras, kus Lovable näitab "Connected", aga GitHubi repo URL annab 404 ja uuendused ei ilmu.
+Eesmärk: aidata sul lahendada Lovable GitHub ühenduse viga olukorras, kus personaalne konto on nähtav, popup avaneb, aga viga tekib “Transfer anyway” sammus.
 
 1. Tõenäoline põhjus
-- Sinu kirjeldus viitab sellele, et Lovable projekt on seotud repo viitega, mis GitHubis enam ei eksisteeri või pole sinu praeguse konto all nähtav.
-- Kuna GitHubis näed 404 ja repot pole ka "Repositories" nimekirjas, siis probleem ei paista olevat lihtsalt "sync hilineb", vaid pigem katkine repo-seos.
-- Tähtis: Lovables vajutatud "Update" puudutab avaldatud veebilehte; GitHubi sync käib eraldi repo-ühenduse kaudu. Frontend koodimuudatus peaks GitHubi jõudma ainult siis, kui repo-seos on korras.
+- Praegu ei paista probleem olevat koodi või projekti failidega.
+- Sinu kirjeldus + ekraanipilt viitavad sellele, et GitHub konto on Lovable külge küll seotud, aga projekti repo loomise või projekti “transfer/connect” kinnitamise samm ebaõnnestub.
+- Kuna viga tekib just “Transfer anyway” juures, on kõige tõenäolisemad põhjused:
+  - Lovable GitHub App ei ole täielikult installitud sinu personaalse konto alla
+  - brauseri popup/cookie tracking takistab auth flow lõppu
+  - vana katkine GitHub ühenduse olek on jäänud kontole/projektile külge
+  - konto on ühendatud, aga project-level install/authorize samm jäi poolikuks
 
-2. Kontrollplaan
-- Ava GitHubis oma profiili ja private repos nimekiri.
-- Otsi mõlemat võimalikku repo nimekuju, mis vestluses ja ekraanipiltidel on läbi käinud:
-  - `veebikoolicvi-d6c425e6`
-  - `veebikoolicvi-59a6144d`
-- Kui kumbagi pole olemas, siis praegune ühendus viitab sisuliselt "kadunud" repole.
-- Kui repo on olemas mõne teise konto või organisatsiooni all, siis on Lovable ühendatud vale account/org kontekstiga.
+2. Mida ma soovitan teha
+- Tee ühendus uuesti täiesti puhtalt, aga seekord personaalse konto alla, mitte organisatsiooni kaudu.
+- Väldi vana katkise repo või org-ühenduse taastamist.
+- Kontrolli, et Lovable GitHub App oleks installitud sinu isiklikule GitHub kontole, mitte ainult konto “connected” olek Lovables.
 
-3. Paranduse plaan
-- Katkesta GitHub ühendus Lovables uuesti.
-- Ühenda GitHub tagasi nii, et valid õigesti sama GitHub konto/organisatsiooni, kuhu repo peab tekkima.
-- Loo ühendamisel uus repo, mitte ära looda vana 404 lingi taastumisele.
-- Kui Lovable pakub olemasoleva katkise repo külge sidumist, siis eelista uue repo loomist.
-
-4. Pärast taasühendamist
-- Tee üks väga väike frontend muudatus projektis.
-- Oota lühidalt ja ava uus repo GitHubis otse profiili "Repositories" nimekirjast, mitte vana bookmarki või vana URL-i kaudu.
-- Kontrolli, kas ilmub vähemalt esimene commit ja projekti failid.
-
-5. Kui ka uus ühendus ei tööta
-- Kontrolli GitHub App õigusi selle konto/organisatsiooni peal.
-- Kui kasutad mitut GitHub kontot brauseris, logi teistest välja või ava protsess inkognito aknas, et vältida vale konto külge ühendamist.
-- Kui repo loomine õnnestub, aga uued commitid ikka ei ilmu, siis järgmine kahtlus on default branch:
-  - kontrolli, et repo vaikimisi haru on `main`
-  - ära testi branchiga, mis pole default branch
-
-6. Soovitatud teostusjärjekord
+3. Täpne tegevusplaan
 ```text
-Lovable Settings → GitHub → Disconnect
-GitHubis kontrolli konto/org ja private repos
-Lovable Settings → GitHub → Connect project
-Vali õige konto/org
-Loo uus repo
-Tee väike koodimuudatus
-Kontrolli uut repo URL-i GitHubi repo listist
+A. GitHubis
+1. Ava GitHub → Settings → Applications
+2. Vaata:
+   - Authorized OAuth Apps
+   - Installed GitHub Apps
+3. Kui Lovable / lovable.dev on olemas:
+   - eemalda/revoke vana ühendus
+4. Kui Lovable puudub:
+   - see tähendab, et account on seotud, aga app install ei ole lõpuni tehtud
+
+B. Lovables
+1. Ava Project Settings → GitHub
+2. Veendu, et Connected account on sinu personaalne konto
+3. Vajuta Connect project
+4. Vali ainult personaalne konto
+5. Kui avaneb GitHubi aken:
+   - vali Install & Authorize
+   - anna ligipääs vähemalt sellele kontole
+6. Tagasi Lovables:
+   - loo uus repo
+   - kinnita Transfer anyway
+
+C. Kui sama viga kordub
+1. Proovi sama voogu inkognito aknas
+2. Luba popups for lovable.dev
+3. Keela ajutiselt adblock/privacy extensionid
+4. Veendu, et GitHubis oled sisse logitud ainult selle ühe õige kontoga
 ```
 
-7. Tehnilised märkused
-- 404 GitHubis tähendab tavaliselt ühte neist:
-  - repo on kustutatud
-  - repo on ümber nimetatud või liigutatud
-  - repo on teise konto/org all
-  - Lovable ühendus jäi vana repo identifikaatori külge
-- "Update" nupu vajutamine ei ole GitHub synci kinnitus; see uuendab avaldatud frontendit.
-- Kuna sul on 404 + repo ei ilmu nimekirjas, on kõige mõistlikum taastumisviis uus puhas repo-ühendus, mitte vana lingi parandamine.
+4. Kuidas ma loen sinu viimast ekraanipilti
+- Lovable näitab:
+  - Connected account: olemas
+  - Connect project: not connected
+- See tähendab, et konto tase ja projekti tase ei ole sama asi.
+- Konto on ära tuvastatud, aga projektile repo ühendamist ei suudeta lõpuni vormistada.
 
-8. Minu soovitus sinu juhtumi jaoks
-- Ära proovi enam vana repo linki päästa.
-- Tee uus ühendus ja lase Lovablel luua täiesti uus repo õigesse GitHub kontosse.
-- Pärast seda testi ühe väikese frontend muudatusega, kas commit tekib.
+5. Tehniline detail
+- Lovable docs järgi töötab ühendus nii:
+  1. connect GitHub account
+  2. install Lovable GitHub App account/org peale
+  3. connect specific project repository
+- Sul on tõenäoliselt samm 1 tehtud, aga samm 2 või 3 katkeb.
+- “Something went wrong” selles faasis ei viita tavaliselt sinu React projekti veale, vaid auth/install/permission flow probleemile.
 
-Kui soovid, järgmine samm plaanis oleks koostada sulle täpselt sinu ekraani järgi lühike "kliki siia, siis siia" juhis desktopi ja mobiili jaoks, et uus GitHub ühendus korrektselt nullist uuesti teha.
+6. Kõige praktilisem järgmine samm
+- Keskendu ainult personaalse konto ühendamisele.
+- Ära kasuta praegu Kirjamark organisatsiooni.
+- Tee enne uus puhas authorize/install flow GitHubis.
+- Kui see töötab personaalse konto alla, saab hiljem org ühenduse eraldi korda teha.
+
+7. Kui tahad, järgmine plaaniversioon võiks olla väga lühike “kliki siia, siis siia” juhend mõlema jaoks:
+- desktop
+- mobile
+
+8. Mida ma ei soovita praegu teha
+- mitte proovida vana 404 repo linki taastada
+- mitte testida samaaegselt nii orgi kui personaalse konto all
+- mitte eeldada, et “Connected account” tähendab automaatselt, et “Connect project” saab repo luua
+
+Tehnilised märkused
+- “Connected account” = GitHub identiteet on Lovablega seotud
+- “Connect project” = konkreetsele projektile luuakse repo ja 2-way sync
+- “Transfer anyway” samm on koht, kus projekt seotakse repo loomise flowga
+- Kui see samm kukub läbi, on probleem peaaegu kindlasti integratsiooni õigustes, popup auth voos või pooleli jäänud GitHub App installis
