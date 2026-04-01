@@ -276,12 +276,12 @@ export default function Index() {
           <h3 className="text-xs font-heading font-semibold text-gray-400 uppercase tracking-widest mt-12 mb-4">Gradient-taustad</h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { name: "Peamine", bg: "linear-gradient(135deg, #A2146A, #EF8005)" },
-              { name: "Tume", bg: "linear-gradient(135deg, #7B0F50, #A2146A)" },
-              { name: "Soe", bg: "linear-gradient(135deg, #EF8005, #FFC683)" },
-              { name: "Sinine", bg: "linear-gradient(135deg, #A2146A, #4A90D9)" },
-              { name: "Roosa", bg: "linear-gradient(135deg, #A2146A, #ECD9E4)" },
-              { name: "Roheline", bg: "linear-gradient(135deg, #369D69, #DAF8E9)" },
+              { name: "Peamine", bg: "linear-gradient(135deg, #ECD9E4, #FFC683)" },
+              { name: "Tume", bg: "linear-gradient(135deg, #E8D0DE, #ECD9E4)" },
+              { name: "Soe", bg: "linear-gradient(135deg, #FFC683, #FFF0DC)" },
+              { name: "Sinine", bg: "linear-gradient(135deg, #ECD9E4, #EFF4F9)" },
+              { name: "Roosa", bg: "linear-gradient(135deg, #F3E4ED, #FAF5F8)" },
+              { name: "Roheline", bg: "linear-gradient(135deg, #DAF8E9, #F0FBF5)" },
             ].map((g) => (
               <div key={g.name} className="rounded-2xl overflow-hidden border border-gray-100 hover:shadow-sm transition-shadow">
                 <div className="h-28" style={{ background: g.bg }} />
