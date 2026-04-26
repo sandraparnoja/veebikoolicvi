@@ -1,7 +1,17 @@
 {
   "brand": "Veebikool",
-  "version": "1.2",
-  "lastUpdated": "2026-03-24",
+  "version": "1.3",
+  "lastUpdated": "2026-04-26",
+
+  "rules": {
+    "minBodyTextSize": "18px",
+    "bodyTextColor": "#1A1A1A",
+    "forbiddenBodyColors": ["#666", "#777", "#888", "#999", "#aaa", "gray-400", "gray-500", "gray-600", "text-muted", "text-secondary"],
+    "heroBackground": "Kasuta valget (#FFFFFF), heledat (#F8F9FA) või pastel-gradienti (nt #ECD9E4→#FFFFFF, #EFF4F9→#FFFFFF). MITTE tugevat lilla→oranž gradienti.",
+    "strongGradientUsage": "Tugevaid küllastunud gradiente (nt #A2146A→#EF8005) kasuta AINULT väikestel CTA-nuppudel ja badge'idel, mitte sektsioonide taustana.",
+    "contrastMinimum": "WCAG AA 4.5:1 normaaltekstile",
+    "noOpacityForText": "Ära kasuta opacity < 1 loetavale tekstile — tee hierarhia suuruse ja kaalu kaudu"
+  },
 
   "colors": {
     "primary": {
@@ -32,7 +42,7 @@
   },
 
   "gradients": {
-    "purpleToOrange": { "css": "linear-gradient(135deg, #A2146A 0%, #EF8005 100%)", "usage": "Hero-sektsioonid, CTA taustad" },
+    "purpleToOrange": { "css": "linear-gradient(135deg, #A2146A 0%, #EF8005 100%)", "usage": "AINULT väikesed CTA-nupud ja badge'id — MITTE hero ega sektsiooni taust" },
     "purpleToDark": { "css": "linear-gradient(135deg, #A2146A 0%, #7B0F50 100%)", "usage": "Nupud, jalused" },
     "orangeToYellow": { "css": "linear-gradient(135deg, #EF8005 0%, #FFC683 100%)", "usage": "Esiletõstmised" },
     "softPink": { "css": "linear-gradient(135deg, #ECD9E4 0%, #F8F9FA 100%)", "usage": "Kaartide taustad" },
@@ -68,10 +78,10 @@
       "h2": { "size": "36px", "weight": 700, "lineHeight": "1.25", "font": "Nunito Sans" },
       "h3": { "size": "28px", "weight": 700, "lineHeight": "1.3", "font": "Nunito Sans" },
       "h4": { "size": "22px", "weight": 600, "lineHeight": "1.35", "font": "Nunito Sans" },
-      "body": { "size": "16px", "weight": 400, "lineHeight": "1.6", "font": "Overpass" },
-      "bodyLarge": { "size": "18px", "weight": 400, "lineHeight": "1.6", "font": "Overpass" },
-      "small": { "size": "14px", "weight": 400, "lineHeight": "1.5", "font": "Overpass" },
-      "button": { "size": "16px", "weight": 700, "lineHeight": "1", "font": "Nunito Sans" }
+      "body": { "size": "18px", "weight": 400, "lineHeight": "1.6", "font": "Overpass", "color": "#1A1A1A", "usage": "Kehatekst — MIINIMUM suurus" },
+      "bodyLarge": { "size": "20px", "weight": 400, "lineHeight": "1.6", "font": "Overpass", "color": "#1A1A1A" },
+      "small": { "size": "16px", "weight": 400, "lineHeight": "1.5", "font": "Overpass", "color": "#1A1A1A", "usage": "AINULT meta/caption (timestamps, badge-tekst), MITTE kehatekst" },
+      "button": { "size": "18px", "weight": 700, "lineHeight": "1", "font": "Nunito Sans" }
     }
   },
 

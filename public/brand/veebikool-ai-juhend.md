@@ -55,37 +55,55 @@
 
 ---
 
-## 3. Gradiendid
+## 3. Gradiendid ja taustad
+
+> ⚠️ **TÄHTIS REEGEL:** Hero-sektsioonid ja suured sektsioonide taustad KASUTAVAD pastel-toonid või valget. **Tugevat küllastunud lilla→oranž gradienti ÄRA kasuta** suurte sektsioonide taustana — see sobib AINULT väikestele CTA-nuppudele või badge'idele. Visuaalne stiil on minimalistlik ja puhas, palju valget ruumi, must tekst loetavuse tagamiseks.
+
+### ✅ EELISTATUD hero- ja sektsioonitaustad
 
 ```css
-/* Peamine hero gradient */
+/* Vaikimisi: puhas valge */
+background: #FFFFFF;
+
+/* Alternatiiv: hele neutraalne */
+background: #F8F9FA;
+
+/* Pehme pastel-roosa hero */
+background: linear-gradient(135deg, #ECD9E4 0%, #FFFFFF 100%);
+
+/* Pehme pastel-sinine hero */
+background: linear-gradient(135deg, #EFF4F9 0%, #FFFFFF 100%);
+
+/* Pastel mix */
+background: linear-gradient(135deg, #ECD9E4 0%, #EFF4F9 100%);
+
+/* Edu-sektsioon */
+background: linear-gradient(135deg, #DAF8E9 0%, #FFFFFF 100%);
+```
+
+### ✅ Lubatud AINULT väikestel CTA-nuppudel ja badge'idel
+
+```css
+/* CTA-nupp (mitte sektsiooni taust!) */
 background: linear-gradient(135deg, #A2146A 0%, #EF8005 100%);
 
-/* Tumeda nupud */
+/* Tume nupp */
 background: linear-gradient(135deg, #A2146A 0%, #7B0F50 100%);
 
-/* Oranži esiletõstmine */
+/* Oranž esiletõstmine (väike element) */
 background: linear-gradient(135deg, #EF8005 0%, #FFC683 100%);
-
-/* Pehme kaardi taust */
-background: linear-gradient(135deg, #ECD9E4 0%, #F8F9FA 100%);
-
-/* Neutraalne sektsioon */
-background: linear-gradient(135deg, #EFF4F9 0%, #DAF8E9 100%);
-
-/* Alternatiivne hero */
-background: linear-gradient(135deg, #A2146A 0%, #4A90D9 100%);
-
-/* Pehme CTA */
-background: linear-gradient(135deg, #A2146A 0%, #ECD9E4 100%);
-
-/* Edukas */
-background: linear-gradient(135deg, #369D69 0%, #DAF8E9 100%);
 ```
+
+### ❌ ÄRA TEE
+- ❌ Ära pane tugevat lilla→oranž gradienti hero-sektsiooni taustaks
+- ❌ Ära kasuta küllastunud lilla→sinine gradienti suurte alade taga
+- ❌ Ära kata tervet sektsiooni `#A2146A` või `#EF8005` ühtlaselt — need värvid on rõhuasetuste jaoks
 
 ---
 
 ## 4. Tüpograafia
+
+> ⚠️ **MIINIMUM kehateksti suurus on 18px.** Ära KUNAGI kasuta 14px ega 16px lõikudele, kirjeldustele, CTA-alateksti, kursuste kirjeldustele ega muule kehatekstile. 14–16px on lubatud AINULT badge-tekstidele, ajatemplitele ja meta-infole (nt "5 min lugemist").
 
 ### Fondid
 | Kasutus | Font | Google Fonts | Elementor muutuja |
@@ -100,10 +118,30 @@ background: linear-gradient(135deg, #369D69 0%, #DAF8E9 100%);
 | H2 | 36px | 700 (Bold) | 1.25 | Nunito Sans |
 | H3 | 28px | 700 (Bold) | 1.3 | Nunito Sans |
 | H4 | 22px | 600 (SemiBold) | 1.35 | Nunito Sans |
-| Kehatekst | 16px | 400 (Regular) | 1.6 | Overpass |
-| Kehatekst suur | 18px | 400 (Regular) | 1.6 | Overpass |
-| Väike tekst | 14px | 400 (Regular) | 1.5 | Overpass |
-| Nupu tekst | 16px | 700 (Bold) | 1 | Nunito Sans |
+| **Kehatekst (baas)** | **18px** | 400 (Regular) | 1.6 | Overpass |
+| Kehatekst suur | 20px | 400 (Regular) | 1.6 | Overpass |
+| Meta / caption (AINULT) | 16px | 400 (Regular) | 1.5 | Overpass |
+| Nupu tekst | 18px | 700 (Bold) | 1 | Nunito Sans |
+
+---
+
+## 4.1 Värvi- ja kontrastireeglid (KOHUSTUSLIK)
+
+> AI peab neid reegleid järgima IGAS genereeritud kujunduses. Need on tähtsamad kui esteetilised eelistused.
+
+### ✅ TEE
+- **Kehatekst on alati `#1A1A1A` (must)** valgel või heledal taustal
+- Pealkirjad: `#1A1A1A` (must) või `#A2146A` (lilla brändivärv)
+- Valgel gradient-taustal (nt nupp): `#FFFFFF`
+- Hoia WCAG AA kontrast: vähemalt **4.5:1** normaaltekstile
+
+### ❌ ÄRA TEE
+- ❌ **ÄRA KASUTA halli kehateksti** — keelatud on `#666`, `#777`, `#888`, `#999`, `#aaa`, `gray-400`, `gray-500`, `gray-600`, `text-muted`, `text-secondary` jms
+- ❌ Ära vähenda teksti kontrasti `opacity: 0.6/0.7/0.8` kaudu — kui tekst on vähem oluline, tee seda väiksemaks (kuid ikka min 18px) või kasuta hierarhiat suuruse/kaalu kaudu, mitte värvi tuhmistamise teel
+- ❌ Ära pane tumedat teksti tumedale taustale ega heledat heledale
+
+---
+
 
 ---
 
@@ -347,12 +385,13 @@ Kategooriate illustratsioonid kursuste kaartidele ja maandumislehtedele.
 
 ### Üldised reeglid
 1. Kasuta alati **Nunito Sans** pealkirjadele ja **Overpass** kehatekstile
-2. Nupud on **pill-kujulised** (border-radius: 50px) ja kasutavad gradient-taustu
+2. Nupud on **pill-kujulised** (border-radius: 50px). Tugevaid gradiente kasuta AINULT nuppudel ja väikestel CTA-elementidel
 3. Sektsioonide padding on vähemalt **80px** ülevalt ja alt
 4. Kasuta **dekoratiivseid SVG-elemente** (nooled, kujundid) sektsioonide rikastamiseks
 5. **Badge'id** kursuste kaartidel on kohustuslikud
-6. Eelistage **pastel-taustu** (#ECD9E4, #EFF4F9) valgele
-7. Kasuta **gradiente** hero-sektsioonides ja CTA-des
+6. Sektsioonitaustad: **valge (#FFFFFF), hele (#F8F9FA) või pastel-gradient** (#ECD9E4, #EFF4F9). MITTE tugev lilla→oranž gradient
+7. **Kogu kehatekst on min 18px ja must (#1A1A1A)** — halli värvi ei kasutata kunagi
+8. Hero-sektsioonid kasutavad valget või pastel-tausta, MITTE küllastunud gradienti
 
 ### Hero sektsiooni mall
 
@@ -361,8 +400,8 @@ Kategooriate illustratsioonid kursuste kaartidele ja maandumislehtedele.
   "type": "section",
   "settings": {
     "background_background": "gradient",
-    "background_color": "#A2146A",
-    "background_color_b": "#EF8005",
+    "background_color": "#ECD9E4",
+    "background_color_b": "#FFFFFF",
     "background_gradient_angle": {"unit": "deg", "size": 135},
     "padding": {"top": "100", "bottom": "100", "unit": "px"}
   },
@@ -379,7 +418,7 @@ Kategooriate illustratsioonid kursuste kaartidele ja maandumislehtedele.
             "typography_font_family": "Nunito Sans",
             "typography_font_weight": "800",
             "typography_font_size": {"unit": "px", "size": 48},
-            "title_color": "#FFFFFF"
+            "title_color": "#1A1A1A"
           }
         },
         {
@@ -388,10 +427,11 @@ Kategooriate illustratsioonid kursuste kaartidele ja maandumislehtedele.
           "settings": {
             "editor": "<p>Veebikool pakub üle 200 kvaliteetkoolituse juhtimise, turunduse, müügi ja finantside valdkonnas.</p>",
             "typography_font_family": "Overpass",
-            "typography_font_size": {"unit": "px", "size": 18},
-            "text_color": "#FFFFFF"
+            "typography_font_size": {"unit": "px", "size": 20},
+            "text_color": "#1A1A1A"
           }
         },
+
         {
           "type": "widget",
           "widgetType": "button",
@@ -478,7 +518,7 @@ Kategooriate illustratsioonid kursuste kaartidele ja maandumislehtedele.
       "settings": {
         "editor": "<p>Õpi Google Ads, SEO, sotsiaalmeedia ja e-maili turundust.</p>",
         "typography_font_family": "Overpass",
-        "typography_font_size": {"unit": "px", "size": 14},
+        "typography_font_size": {"unit": "px", "size": 18},
         "text_color": "#1A1A1A",
         "padding": {"top": "8", "right": "24", "bottom": "16", "left": "24", "unit": "px"}
       }
@@ -554,11 +594,17 @@ V: Põhiline CTA: lilla (#A2146A) või gradient (lilla→oranž). Sekundaarne: o
 V: Lisa badge SVG kursuse kaardi ülanurka. Kasuta `badge-populaarne` populaarsetele, `badge-uus` uutele, `badge-tasuta` tasuta kursustele.
 
 **K: Milline taustavärv kasutada?**
-V: Vaheldumisi valge (#FFFFFF), pastel-roosa (#ECD9E4), pastel-sinine (#EFF4F9). Hero-sektsioonid kasutavad gradient-taustu.
+V: Vaheldumisi valge (#FFFFFF), pastel-roosa (#ECD9E4), pastel-sinine (#EFF4F9). Hero-sektsioonid kasutavad VALGET või pastel-tausta — MITTE tugevat lilla→oranž gradienti. Tugev gradient on AINULT väikestel CTA-nuppudel.
+
+**K: Mis on miinimum teksti suurus?**
+V: **18px kehatekstile, alati.** 14px ja 16px on KEELATUD lõikude, kirjelduste ja CTA-alateksti jaoks. 14–16px on lubatud AINULT badge-tekstidele ja meta-infole (timestamps, "5 min lugemist" jne).
+
+**K: Kas tohib kasutada halli teksti?**
+V: **Ei.** Kehatekst on alati `#1A1A1A` must. Halli värve (#666, #888, #999, gray-500, text-muted jne) ei kasutata kunagi — need rikuvad kontrasti ja loetavust. Hierarhiat tekita suuruse ja kaalu, mitte värvi tuhmistamise kaudu.
 
 **K: Kuidas lisada dekoratiivseid elemente?**
 V: Kasuta SVG nooli sektsioonide vahel, blob-kujundeid nurkades ja jooni eraldajatena. Ära kasuta liiga palju — 1-2 dekoratiivset elementi sektsiooni kohta.
 
 ---
 
-*Genereeritud: 2026-03-25 · Veebikool CVI Brand Toolkit*
+*Versioon 1.3 · Genereeritud: 2026-04-26 · Veebikool CVI Brand Toolkit*
