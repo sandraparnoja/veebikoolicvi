@@ -518,7 +518,7 @@ Kategooriate illustratsioonid kursuste kaartidele ja maandumislehtedele.
       "settings": {
         "editor": "<p>Õpi Google Ads, SEO, sotsiaalmeedia ja e-maili turundust.</p>",
         "typography_font_family": "Overpass",
-        "typography_font_size": {"unit": "px", "size": 14},
+        "typography_font_size": {"unit": "px", "size": 18},
         "text_color": "#1A1A1A",
         "padding": {"top": "8", "right": "24", "bottom": "16", "left": "24", "unit": "px"}
       }
@@ -594,11 +594,17 @@ V: Põhiline CTA: lilla (#A2146A) või gradient (lilla→oranž). Sekundaarne: o
 V: Lisa badge SVG kursuse kaardi ülanurka. Kasuta `badge-populaarne` populaarsetele, `badge-uus` uutele, `badge-tasuta` tasuta kursustele.
 
 **K: Milline taustavärv kasutada?**
-V: Vaheldumisi valge (#FFFFFF), pastel-roosa (#ECD9E4), pastel-sinine (#EFF4F9). Hero-sektsioonid kasutavad gradient-taustu.
+V: Vaheldumisi valge (#FFFFFF), pastel-roosa (#ECD9E4), pastel-sinine (#EFF4F9). Hero-sektsioonid kasutavad VALGET või pastel-tausta — MITTE tugevat lilla→oranž gradienti. Tugev gradient on AINULT väikestel CTA-nuppudel.
+
+**K: Mis on miinimum teksti suurus?**
+V: **18px kehatekstile, alati.** 14px ja 16px on KEELATUD lõikude, kirjelduste ja CTA-alateksti jaoks. 14–16px on lubatud AINULT badge-tekstidele ja meta-infole (timestamps, "5 min lugemist" jne).
+
+**K: Kas tohib kasutada halli teksti?**
+V: **Ei.** Kehatekst on alati `#1A1A1A` must. Halli värve (#666, #888, #999, gray-500, text-muted jne) ei kasutata kunagi — need rikuvad kontrasti ja loetavust. Hierarhiat tekita suuruse ja kaalu, mitte värvi tuhmistamise kaudu.
 
 **K: Kuidas lisada dekoratiivseid elemente?**
 V: Kasuta SVG nooli sektsioonide vahel, blob-kujundeid nurkades ja jooni eraldajatena. Ära kasuta liiga palju — 1-2 dekoratiivset elementi sektsiooni kohta.
 
 ---
 
-*Genereeritud: 2026-03-25 · Veebikool CVI Brand Toolkit*
+*Versioon 1.3 · Genereeritud: 2026-04-26 · Veebikool CVI Brand Toolkit*
