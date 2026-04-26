@@ -55,33 +55,49 @@
 
 ---
 
-## 3. Gradiendid
+## 3. Gradiendid ja taustad
+
+> ⚠️ **TÄHTIS REEGEL:** Hero-sektsioonid ja suured sektsioonide taustad KASUTAVAD pastel-toonid või valget. **Tugevat küllastunud lilla→oranž gradienti ÄRA kasuta** suurte sektsioonide taustana — see sobib AINULT väikestele CTA-nuppudele või badge'idele. Visuaalne stiil on minimalistlik ja puhas, palju valget ruumi, must tekst loetavuse tagamiseks.
+
+### ✅ EELISTATUD hero- ja sektsioonitaustad
 
 ```css
-/* Peamine hero gradient */
+/* Vaikimisi: puhas valge */
+background: #FFFFFF;
+
+/* Alternatiiv: hele neutraalne */
+background: #F8F9FA;
+
+/* Pehme pastel-roosa hero */
+background: linear-gradient(135deg, #ECD9E4 0%, #FFFFFF 100%);
+
+/* Pehme pastel-sinine hero */
+background: linear-gradient(135deg, #EFF4F9 0%, #FFFFFF 100%);
+
+/* Pastel mix */
+background: linear-gradient(135deg, #ECD9E4 0%, #EFF4F9 100%);
+
+/* Edu-sektsioon */
+background: linear-gradient(135deg, #DAF8E9 0%, #FFFFFF 100%);
+```
+
+### ✅ Lubatud AINULT väikestel CTA-nuppudel ja badge'idel
+
+```css
+/* CTA-nupp (mitte sektsiooni taust!) */
 background: linear-gradient(135deg, #A2146A 0%, #EF8005 100%);
 
-/* Tumeda nupud */
+/* Tume nupp */
 background: linear-gradient(135deg, #A2146A 0%, #7B0F50 100%);
 
-/* Oranži esiletõstmine */
+/* Oranž esiletõstmine (väike element) */
 background: linear-gradient(135deg, #EF8005 0%, #FFC683 100%);
-
-/* Pehme kaardi taust */
-background: linear-gradient(135deg, #ECD9E4 0%, #F8F9FA 100%);
-
-/* Neutraalne sektsioon */
-background: linear-gradient(135deg, #EFF4F9 0%, #DAF8E9 100%);
-
-/* Alternatiivne hero */
-background: linear-gradient(135deg, #A2146A 0%, #4A90D9 100%);
-
-/* Pehme CTA */
-background: linear-gradient(135deg, #A2146A 0%, #ECD9E4 100%);
-
-/* Edukas */
-background: linear-gradient(135deg, #369D69 0%, #DAF8E9 100%);
 ```
+
+### ❌ ÄRA TEE
+- ❌ Ära pane tugevat lilla→oranž gradienti hero-sektsiooni taustaks
+- ❌ Ära kasuta küllastunud lilla→sinine gradienti suurte alade taga
+- ❌ Ära kata tervet sektsiooni `#A2146A` või `#EF8005` ühtlaselt — need värvid on rõhuasetuste jaoks
 
 ---
 
