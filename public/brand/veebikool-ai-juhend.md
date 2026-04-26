@@ -103,6 +103,8 @@ background: linear-gradient(135deg, #EF8005 0%, #FFC683 100%);
 
 ## 4. Tüpograafia
 
+> ⚠️ **MIINIMUM kehateksti suurus on 18px.** Ära KUNAGI kasuta 14px ega 16px lõikudele, kirjeldustele, CTA-alateksti, kursuste kirjeldustele ega muule kehatekstile. 14–16px on lubatud AINULT badge-tekstidele, ajatemplitele ja meta-infole (nt "5 min lugemist").
+
 ### Fondid
 | Kasutus | Font | Google Fonts | Elementor muutuja |
 |---------|------|-------------|-------------------|
@@ -116,10 +118,30 @@ background: linear-gradient(135deg, #EF8005 0%, #FFC683 100%);
 | H2 | 36px | 700 (Bold) | 1.25 | Nunito Sans |
 | H3 | 28px | 700 (Bold) | 1.3 | Nunito Sans |
 | H4 | 22px | 600 (SemiBold) | 1.35 | Nunito Sans |
-| Kehatekst | 16px | 400 (Regular) | 1.6 | Overpass |
-| Kehatekst suur | 18px | 400 (Regular) | 1.6 | Overpass |
-| Väike tekst | 14px | 400 (Regular) | 1.5 | Overpass |
-| Nupu tekst | 16px | 700 (Bold) | 1 | Nunito Sans |
+| **Kehatekst (baas)** | **18px** | 400 (Regular) | 1.6 | Overpass |
+| Kehatekst suur | 20px | 400 (Regular) | 1.6 | Overpass |
+| Meta / caption (AINULT) | 16px | 400 (Regular) | 1.5 | Overpass |
+| Nupu tekst | 18px | 700 (Bold) | 1 | Nunito Sans |
+
+---
+
+## 4.1 Värvi- ja kontrastireeglid (KOHUSTUSLIK)
+
+> AI peab neid reegleid järgima IGAS genereeritud kujunduses. Need on tähtsamad kui esteetilised eelistused.
+
+### ✅ TEE
+- **Kehatekst on alati `#1A1A1A` (must)** valgel või heledal taustal
+- Pealkirjad: `#1A1A1A` (must) või `#A2146A` (lilla brändivärv)
+- Valgel gradient-taustal (nt nupp): `#FFFFFF`
+- Hoia WCAG AA kontrast: vähemalt **4.5:1** normaaltekstile
+
+### ❌ ÄRA TEE
+- ❌ **ÄRA KASUTA halli kehateksti** — keelatud on `#666`, `#777`, `#888`, `#999`, `#aaa`, `gray-400`, `gray-500`, `gray-600`, `text-muted`, `text-secondary` jms
+- ❌ Ära vähenda teksti kontrasti `opacity: 0.6/0.7/0.8` kaudu — kui tekst on vähem oluline, tee seda väiksemaks (kuid ikka min 18px) või kasuta hierarhiat suuruse/kaalu kaudu, mitte värvi tuhmistamise teel
+- ❌ Ära pane tumedat teksti tumedale taustale ega heledat heledale
+
+---
+
 
 ---
 
