@@ -385,12 +385,13 @@ Kategooriate illustratsioonid kursuste kaartidele ja maandumislehtedele.
 
 ### Üldised reeglid
 1. Kasuta alati **Nunito Sans** pealkirjadele ja **Overpass** kehatekstile
-2. Nupud on **pill-kujulised** (border-radius: 50px) ja kasutavad gradient-taustu
+2. Nupud on **pill-kujulised** (border-radius: 50px). Tugevaid gradiente kasuta AINULT nuppudel ja väikestel CTA-elementidel
 3. Sektsioonide padding on vähemalt **80px** ülevalt ja alt
 4. Kasuta **dekoratiivseid SVG-elemente** (nooled, kujundid) sektsioonide rikastamiseks
 5. **Badge'id** kursuste kaartidel on kohustuslikud
-6. Eelistage **pastel-taustu** (#ECD9E4, #EFF4F9) valgele
-7. Kasuta **gradiente** hero-sektsioonides ja CTA-des
+6. Sektsioonitaustad: **valge (#FFFFFF), hele (#F8F9FA) või pastel-gradient** (#ECD9E4, #EFF4F9). MITTE tugev lilla→oranž gradient
+7. **Kogu kehatekst on min 18px ja must (#1A1A1A)** — halli värvi ei kasutata kunagi
+8. Hero-sektsioonid kasutavad valget või pastel-tausta, MITTE küllastunud gradienti
 
 ### Hero sektsiooni mall
 
@@ -399,8 +400,8 @@ Kategooriate illustratsioonid kursuste kaartidele ja maandumislehtedele.
   "type": "section",
   "settings": {
     "background_background": "gradient",
-    "background_color": "#A2146A",
-    "background_color_b": "#EF8005",
+    "background_color": "#ECD9E4",
+    "background_color_b": "#FFFFFF",
     "background_gradient_angle": {"unit": "deg", "size": 135},
     "padding": {"top": "100", "bottom": "100", "unit": "px"}
   },
@@ -417,7 +418,7 @@ Kategooriate illustratsioonid kursuste kaartidele ja maandumislehtedele.
             "typography_font_family": "Nunito Sans",
             "typography_font_weight": "800",
             "typography_font_size": {"unit": "px", "size": 48},
-            "title_color": "#FFFFFF"
+            "title_color": "#1A1A1A"
           }
         },
         {
@@ -426,10 +427,11 @@ Kategooriate illustratsioonid kursuste kaartidele ja maandumislehtedele.
           "settings": {
             "editor": "<p>Veebikool pakub üle 200 kvaliteetkoolituse juhtimise, turunduse, müügi ja finantside valdkonnas.</p>",
             "typography_font_family": "Overpass",
-            "typography_font_size": {"unit": "px", "size": 18},
-            "text_color": "#FFFFFF"
+            "typography_font_size": {"unit": "px", "size": 20},
+            "text_color": "#1A1A1A"
           }
         },
+
         {
           "type": "widget",
           "widgetType": "button",
