@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Download, FileJson, Image, Package, ArrowLeft, Loader2, BookOpen } from "lucide-react";
+import { Download, FileJson, Image, Package, ArrowLeft, Loader2, BookOpen, Figma } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import JSZip from "jszip";
