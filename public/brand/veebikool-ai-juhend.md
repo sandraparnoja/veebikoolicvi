@@ -553,28 +553,177 @@ See fail sisaldab kõiki värvide, fontide, logode, taustade, kujunduselementide
 
 ---
 
-## 11. Failide URL-id
+## 11. Asset URL-id (AI tööriistadele)
 
-Kõik failid on avalikult ligipääsetavad:
+**Baas-URL:** `https://veebikoolicvi.lovable.app`
 
+Kõik failid on avalikult ligipääsetavad — AI tööriistad (Claude, ChatGPT, Cursor jt) saavad need otse `fetch`-ida.
+
+### Brändipakk (ZIP — kõik korraga)
 ```
-# Logod
-/brand/logos/veebikool-logo.png
-/brand/logos/veebikool-logomark.png
+https://veebikoolicvi.lovable.app/brand/veebikool-brand-kit.zip
+```
+Sisaldab: logod, kõik 136 SVG-d, 5 taustapilti, brand-config.json ja see juhend. Lae alla ja paki lahti — kõik assetid on lokaalselt saadaval.
 
-# Taustapildid
-/brand/backgrounds/juhtimine-bg.png
-/brand/backgrounds/juriidika-bg.png
-/brand/backgrounds/turundus-bg.png
-/brand/backgrounds/muuk-bg.png
-/brand/backgrounds/finantsid-bg.png
+### JSON konfiguratsioon (masinloetav)
+```
+https://veebikoolicvi.lovable.app/brand/brand-config.json
+https://veebikoolicvi.lovable.app/api/brand-config.json
+```
 
-# SVG kujunduselemendid
-/brand/svg/[element-id].svg
+### Logod (PNG, läbipaistev taust)
+```
+https://veebikoolicvi.lovable.app/brand/logos/veebikool-logo.png
+https://veebikoolicvi.lovable.app/brand/logos/veebikool-logomark.png
+```
 
-# JSON konfiguratsioon
-/api/brand-config.json
-/brand/brand-config.json
+### Taustapildid (PNG, kategooriate kaupa)
+```
+https://veebikoolicvi.lovable.app/brand/backgrounds/juhtimine-bg.png
+https://veebikoolicvi.lovable.app/brand/backgrounds/juriidika-bg.png
+https://veebikoolicvi.lovable.app/brand/backgrounds/turundus-bg.png
+https://veebikoolicvi.lovable.app/brand/backgrounds/muuk-bg.png
+https://veebikoolicvi.lovable.app/brand/backgrounds/finantsid-bg.png
+```
+
+### SVG kujunduselemendid (kõik 136)
+```
+https://veebikoolicvi.lovable.app/brand/svg/airplane-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/airplane-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/arrow-line-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-algaja.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-bestseller.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-dot-live.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-dot-populaarne.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-edasijoudnud.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-ekspert.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-interaktiivne.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-live.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-outline-preemium.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-outline-tasuta.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-outline-uus.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-piiratud.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-populaarne.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-preemium.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-pro.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-sertifikaat.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-soodne.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-soovitatud.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-tasuta.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-tunnistus.svg
+https://veebikoolicvi.lovable.app/brand/svg/badge-uus.svg
+https://veebikoolicvi.lovable.app/brand/svg/blob-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/blob-pink.svg
+https://veebikoolicvi.lovable.app/brand/svg/blob-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/blob2-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/blob3-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/bouncing-arrow-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/bracket-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/circle-arrow-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/concentric-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/cross-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/crosshatch-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/curved-arrow-left-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/curved-arrow-left-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/curved-arrow-right-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/curved-arrow-right-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/dashdot-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/dashed-curved-down-black.svg
+https://veebikoolicvi.lovable.app/brand/svg/dashed-curved-up-black.svg
+https://veebikoolicvi.lovable.app/brand/svg/dashed-curved-up-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/dashed-curved-up-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/dashed-loop-black.svg
+https://veebikoolicvi.lovable.app/brand/svg/dashed-loop-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/dashed-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/dashed-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/diagonal-down-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/diagonal-up-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/diamond-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/dots-purple-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/dotted-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/dotted-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/double-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-circle-dashed-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-circle-double-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-circle-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-cornerdots-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-dashed-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-dashed-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-dotted-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-double-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-heart-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-hexagon-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-rounded-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-rounded-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-shield-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-solid-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-solid-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-squircle-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-ticket-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/frame-wavy-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/gradient-line.svg
+https://veebikoolicvi.lovable.app/brand/svg/hexagon-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/highlight-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/highlight-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-bell-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-book-green.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-book-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-calendar-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-camera-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-certificate-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-chart-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-checkbadge-green.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-clock-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-globe-blue.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-graduation-blue.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-graduation-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-heart-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-laptop-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-laptop-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-lightbulb-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-lightbulb-red.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-mail-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-microphone-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-pencil-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-pencil-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-play-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-rocket-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-settings-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-shield-green.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-star-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-target-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-trophy-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-users-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/icon-wifi-blue.svg
+https://veebikoolicvi.lovable.app/brand/svg/ring-green.svg
+https://veebikoolicvi.lovable.app/brand/svg/ring-purple-blue.svg
+https://veebikoolicvi.lovable.app/brand/svg/ring-purple-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/s-curve-black.svg
+https://veebikoolicvi.lovable.app/brand/svg/scallop-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/scatter-dots.svg
+https://veebikoolicvi.lovable.app/brand/svg/semicircle-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/solid-curved-down-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/solid-curved-up-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/solid-curved-up-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/solid-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/solid-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/spiral-arrow-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/star-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/star-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/straight-arrow-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/straight-arrow-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/straight-dashed-black.svg
+https://veebikoolicvi.lovable.app/brand/svg/thickthin-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/triangle-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/u-arrow-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/wave-line-blue.svg
+https://veebikoolicvi.lovable.app/brand/svg/wave-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/wave-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/wavy-arrow-orange.svg
+https://veebikoolicvi.lovable.app/brand/svg/wavy-arrow-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/wavy-line-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/zigzag-arrow-purple.svg
+https://veebikoolicvi.lovable.app/brand/svg/zigzag-line-orange.svg
 ```
 
 ---
