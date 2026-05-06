@@ -231,7 +231,30 @@ export default function Downloads() {
           </div>
         </section>
 
-        {/* Brand Config JSON */}
+        {/* Brand Kit ZIP for AI */}
+        <section>
+          <h2 className="text-lg font-heading font-bold text-foreground mb-2">Brändipakk AI tööriistadele</h2>
+          <p className="text-sm text-muted-foreground font-body mb-6">
+            Kõik brändifailid ühes ZIP-is — logod, 136 SVG-d, taustapildid, brand-config.json ja AI juhend.
+            Anna link AI-le (Claude, ChatGPT, Cursor) — see laeb alla ja näeb kõiki assette lokaalselt.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={() => downloadFile("/brand/veebikool-brand-kit.zip", "veebikool-brand-kit.zip")}
+              className="group flex items-center gap-3 rounded-2xl border border-border bg-white p-5 hover:border-primary/20 hover:shadow-sm transition-all"
+            >
+              <Package className="w-8 h-8 text-primary shrink-0" />
+              <div className="text-left">
+                <p className="text-sm font-heading font-bold text-foreground">veebikool-brand-kit.zip</p>
+                <p className="text-xs text-muted-foreground">Kogu brändipakk (~770 KB)</p>
+              </div>
+              <Download className="w-4 h-4 text-muted-foreground group-hover:text-foreground ml-auto transition-colors" />
+            </button>
+          </div>
+          <div className="mt-4 rounded-xl bg-muted/40 p-4 text-xs text-muted-foreground font-body">
+            <strong className="text-foreground">AI-le jagamiseks:</strong> kopeeri link <code>https://veebikoolicvi.lovable.app/brand/veebikool-brand-kit.zip</code> ja kleebi vestlusesse.
+          </div>
+        </section>
         <section>
           <h2 className="text-lg font-heading font-bold text-foreground mb-2">Seadistus</h2>
           <p className="text-sm text-muted-foreground font-body mb-6">JSON-formaadis brändikonfiguratsioon Elementor muutujatega</p>
