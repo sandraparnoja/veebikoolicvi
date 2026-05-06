@@ -84,6 +84,7 @@ function downloadImage(src: string, filename: string) {
 }
 
 const BRAND_API_URL = "https://veebikoolicvi.lovable.app/brand/brand-config.json";
+const BRAND_KIT_ZIP_URL = "https://veebikoolicvi.lovable.app/brand/veebikool-brand-kit.zip";
 const AI_GUIDE_PATH = "/brand/veebikool-ai-juhend.md";
 
 export default function Index() {
